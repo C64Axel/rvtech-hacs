@@ -1,0 +1,22 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Dachhaube verbinden",
+        "description": "Wähle deine Dachhaube aus.",
+        "data": {
+          "address": "Bluetooth-Gerät"
+        }
+      },
+      "bluetooth_confirm": {
+        "title": "Dachhaube gefunden",
+        "description": "Möchtest du die Dachhaube ({name}) hinzufügen?"
+      }
+    },
+    "abort": {
+      "already_configured": "Das Gerät ist bereits konfiguriert",
+      "no_devices_found": "Keine kompatiblen Bluetooth-Geräte gefunden"
+    }
+  }
+}
