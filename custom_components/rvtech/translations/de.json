@@ -15,7 +15,7 @@
       },
       "pair": {
         "title": "Dachhaube koppeln",
-        "description": "Gib die 4-stellige PIN der Dachhaube ein. Leer lassen, wenn keine nötig ist. Ist die Haube mit diesem Bluetooth-Adapter bereits gekoppelt, setze den Haken bei „Kopplung überspringen“.",
+        "description": "Gib die PIN der Dachhaube ein. Leer lassen, wenn keine nötig ist. Ist die Haube mit diesem Bluetooth-Adapter bereits gekoppelt, setze den Haken bei „Kopplung überspringen“.",
         "data": {
           "pin": "PIN",
           "skip_pairing": "Kopplung überspringen (bereits gekoppelt)"
@@ -23,7 +23,7 @@
       },
       "reconfigure": {
         "title": "Dachhaube neu koppeln",
-        "description": "Gib die 4-stellige PIN der Dachhaube ein. Leer lassen, wenn keine nötig ist. Ist die Haube mit diesem Bluetooth-Adapter bereits gekoppelt, setze den Haken bei „Kopplung überspringen“.",
+        "description": "Gib die PIN der Dachhaube ein. Leer lassen, wenn keine nötig ist. Ist die Haube mit diesem Bluetooth-Adapter bereits gekoppelt, setze den Haken bei „Kopplung überspringen“.",
         "data": {
           "pin": "PIN",
           "skip_pairing": "Kopplung überspringen (bereits gekoppelt)"
