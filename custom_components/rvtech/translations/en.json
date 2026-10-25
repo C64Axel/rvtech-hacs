@@ -15,7 +15,7 @@
       },
       "pair": {
         "title": "Pair roof hood",
-        "description": "Enter the 4-digit PIN of the roof hood. Leave empty if none is needed. If the hood is already paired with this Bluetooth adapter, tick \"Skip pairing\".",
+        "description": "Enter the PIN of the roof hood. Leave empty if none is needed. If the hood is already paired with this Bluetooth adapter, tick \"Skip pairing\".",
         "data": {
           "pin": "PIN",
           "skip_pairing": "Skip pairing (already paired)"
@@ -23,7 +23,7 @@
       },
       "reconfigure": {
         "title": "Re-pair roof hood",
-        "description": "Enter the 4-digit PIN of the roof hood. Leave empty if none is needed. If the hood is already paired with this Bluetooth adapter, tick \"Skip pairing\".",
+        "description": "Enter the PIN of the roof hood. Leave empty if none is needed. If the hood is already paired with this Bluetooth adapter, tick \"Skip pairing\".",
         "data": {
           "pin": "PIN",
           "skip_pairing": "Skip pairing (already paired)"
