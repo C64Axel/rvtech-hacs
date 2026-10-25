@@ -12,11 +12,36 @@
       "bluetooth_confirm": {
         "title": "Roof hood found",
         "description": "Do you want to add the roof hood ({name})?"
+      },
+      "pair": {
+        "title": "Pair roof hood",
+        "description": "Enter the 4-digit PIN of the roof hood. Leave empty if none is needed. If the hood is already paired with this Bluetooth adapter, tick \"Skip pairing\".",
+        "data": {
+          "pin": "PIN",
+          "skip_pairing": "Skip pairing (already paired)"
+        }
+      },
+      "reconfigure": {
+        "title": "Re-pair roof hood",
+        "description": "Enter the 4-digit PIN of the roof hood. Leave empty if none is needed. If the hood is already paired with this Bluetooth adapter, tick \"Skip pairing\".",
+        "data": {
+          "pin": "PIN",
+          "skip_pairing": "Skip pairing (already paired)"
+        }
       }
     },
     "abort": {
       "already_configured": "Device is already configured",
-      "no_devices_found": "No compatible Bluetooth devices found"
+      "no_devices_found": "No compatible Bluetooth devices found",
+      "reconfigure_successful": "Re-pairing finished"
+    },
+    "error": {
+      "invalid_pin": "The PIN may only contain digits (max. 6).",
+      "not_in_range": "Roof hood not in range. Switch it on and move closer to the Bluetooth adapter.",
+      "proxy_not_supported": "Pairing is only possible via a local Bluetooth adapter (e.g. USB stick), not via a Bluetooth proxy.",
+      "agent_failed": "PIN handling could not be set up (BlueZ/D-Bus not reachable).",
+      "pairing_failed": "Pairing failed. Check the PIN and make sure no other device (phone, Raspberry Pi) is connected to the roof hood.",
+      "cannot_connect": "Could not connect to the roof hood."
     }
   }
 }

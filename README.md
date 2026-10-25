@@ -5,7 +5,7 @@ This integration works with the original Bluetooth receiver from RV Tech.
 
 # Installation
 
-Pair the Bluetooth device with your Bluetooth adapter.
+The integration pairs the device itself during setup (optional PIN). This requires a local Bluetooth adapter (e.g. USB stick); pairing is not possible via an ESPHome Bluetooth proxy. Re-pair later via the integration's *Reconfigure* menu.
 
 ## Manual
 1. Clone the repository to your machine and copy the contents of custom_components/ to your config directory
@@ -24,7 +24,7 @@ Home Assistant plug-in für RV Tech Dachfenster Motorsteuerung.
 Diese Integration arbeitet mit dem original Bluetooth Enpfänger von RV Tech.
 
 # Installation
-Koppeln Sie das Bluetooth-Gerät mit Ihrem Bluetooth-Adapter.
+Die Integration koppelt das Gerät bei der Einrichtung selbst (optional mit PIN). Dafür ist ein lokaler Bluetooth-Adapter (z. B. USB-Stick) nötig; über einen ESPHome-Bluetooth-Proxy ist das Koppeln nicht möglich. Erneutes Koppeln: Menü *Neu konfigurieren* der Integration.
 
 ## Manuell
 1. Klonen Sie das Repository auf Ihren Computer und kopieren Sie den Inhalt von custom_components/ in Ihr Konfigurationsverzeichnis.

@@ -9,6 +9,10 @@ from homeassistant.components.bluetooth import (
 )
 
 from .const import CONF_ADDRESS, DOMAIN
+from .pairing import PairingError, async_pair_device
+
+CONF_PIN = "pin"
+CONF_SKIP = "skip_pairing"
 
 
 def _normalize_address(address: str) -> str:
@@ -21,6 +25,54 @@ class DachhaubeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     def __init__(self) -> None:
         self._discovery_info: BluetoothServiceInfoBleak | None = None
+        self._address: str | None = None
+        self._reconfigure_entry: config_entries.ConfigEntry | None = None
+
+    async def _async_pair_step(self, user_input, *, step_id: str):
+        """Gemeinsamer Kopplungsschritt für Einrichtung und Neu-Kopplung."""
+        errors: dict[str, str] = {}
+        if user_input is not None:
+            if not user_input.get(CONF_SKIP):
+                entry = self._reconfigure_entry
+                if entry is not None:
+                    # Die laufende Dauerverbindung freigeben (die Haube erlaubt nur eine).
+                    await self.hass.config_entries.async_unload(entry.entry_id)
+                try:
+                    await async_pair_device(
+                        self.hass, self._address, (user_input.get(CONF_PIN) or "").strip() or None
+                    )
+                except PairingError as err:
+                    errors["base"] = err.reason
+                finally:
+                    if entry is not None:
+                        await self.hass.config_entries.async_reload(entry.entry_id)
+            if not errors:
+                if self._reconfigure_entry is not None:
+                    return self.async_abort(reason="reconfigure_successful")
+                return self.async_create_entry(
+                    title=f"Dachhaube ({self._address})",
+                    data={CONF_ADDRESS: self._address},
+                )
+
+        return self.async_show_form(
+            step_id=step_id,
+            data_schema=vol.Schema(
+                {
+                    vol.Optional(CONF_PIN, default=""): str,
+                    vol.Optional(CONF_SKIP, default=False): bool,
+                }
+            ),
+            errors=errors,
+        )
+
+    async def async_step_pair(self, user_input=None) -> config_entries.ConfigFlowResult:
+        return await self._async_pair_step(user_input, step_id="pair")
+
+    async def async_step_reconfigure(self, user_input=None) -> config_entries.ConfigFlowResult:
+        """Haube erneut koppeln (z. B. nach Wechsel des Bluetooth-Adapters)."""
+        self._reconfigure_entry = self._get_reconfigure_entry()
+        self._address = self._reconfigure_entry.data[CONF_ADDRESS]
+        return await self._async_pair_step(user_input, step_id="reconfigure")
 
     async def async_step_bluetooth(
         self, discovery_info: BluetoothServiceInfoBleak
@@ -38,15 +90,13 @@ class DachhaubeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_bluetooth_confirm(
         self, user_input=None
     ) -> config_entries.ConfigFlowResult:
-        """Confirm discovery without asking for a PIN."""
+        """Erkennung bestätigen; die Kopplung folgt im nächsten Schritt."""
         assert self._discovery_info is not None
         address = _normalize_address(self._discovery_info.address)
 
         if user_input is not None:
-            return self.async_create_entry(
-                title=f"Dachhaube ({address})",
-                data={CONF_ADDRESS: address},
-            )
+            self._address = address
+            return await self.async_step_pair()
 
         self._set_confirm_only()
         return self.async_show_form(
@@ -65,10 +115,8 @@ class DachhaubeConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             await self.async_set_unique_id(address, raise_on_progress=False)
             self._abort_if_unique_id_configured()
 
-            return self.async_create_entry(
-                title=f"Dachhaube ({address})",
-                data={CONF_ADDRESS: address},
-            )
+            self._address = address
+            return await self.async_step_pair()
 
         current_addresses = self._async_current_ids()
         device_options = {

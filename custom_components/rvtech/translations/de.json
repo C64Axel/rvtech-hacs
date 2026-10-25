@@ -12,11 +12,36 @@
       "bluetooth_confirm": {
         "title": "Dachhaube gefunden",
         "description": "Möchtest du die Dachhaube ({name}) hinzufügen?"
+      },
+      "pair": {
+        "title": "Dachhaube koppeln",
+        "description": "Gib die 4-stellige PIN der Dachhaube ein. Leer lassen, wenn keine nötig ist. Ist die Haube mit diesem Bluetooth-Adapter bereits gekoppelt, setze den Haken bei „Kopplung überspringen“.",
+        "data": {
+          "pin": "PIN",
+          "skip_pairing": "Kopplung überspringen (bereits gekoppelt)"
+        }
+      },
+      "reconfigure": {
+        "title": "Dachhaube neu koppeln",
+        "description": "Gib die 4-stellige PIN der Dachhaube ein. Leer lassen, wenn keine nötig ist. Ist die Haube mit diesem Bluetooth-Adapter bereits gekoppelt, setze den Haken bei „Kopplung überspringen“.",
+        "data": {
+          "pin": "PIN",
+          "skip_pairing": "Kopplung überspringen (bereits gekoppelt)"
+        }
       }
     },
     "abort": {
       "already_configured": "Das Gerät ist bereits konfiguriert",
-      "no_devices_found": "Keine kompatiblen Bluetooth-Geräte gefunden"
+      "no_devices_found": "Keine kompatiblen Bluetooth-Geräte gefunden",
+      "reconfigure_successful": "Neu-Kopplung abgeschlossen"
+    },
+    "error": {
+      "invalid_pin": "Die PIN darf nur aus Ziffern bestehen (max. 6).",
+      "not_in_range": "Dachhaube nicht in Reichweite. Einschalten und näher an den Bluetooth-Adapter bringen.",
+      "proxy_not_supported": "Koppeln geht nur über einen lokalen Bluetooth-Adapter (z. B. USB-Stick), nicht über einen Bluetooth-Proxy.",
+      "agent_failed": "PIN-Abfrage konnte nicht eingerichtet werden (BlueZ/D-Bus nicht erreichbar).",
+      "pairing_failed": "Kopplung fehlgeschlagen. PIN prüfen und sicherstellen, dass kein anderes Gerät (Handy, Raspberry Pi) mit der Dachhaube verbunden ist.",
+      "cannot_connect": "Verbindung zur Dachhaube nicht möglich."
     }
   }
 }
