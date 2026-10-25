@@ -13,7 +13,7 @@ Pair the Bluetooth device with your Bluetooth adapter.
 3. Setup integration via the integration page.
 
 ## HACS
-1. Add this GITrepository to "Custom repositories" in HACS
+1. Add this GITrepository to "Custom repositories" in HACS. [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=rvtech-hacs&owner=C64Axel)
 2. Restart Home Assistant
 3. Setup integration via the integration page.
 
@@ -32,7 +32,7 @@ Koppeln Sie das Bluetooth-Gerät mit Ihrem Bluetooth-Adapter.
 3. Richten Sie die Integration über die Integrationsseite ein.
 
 ## HACS
-1. Fügen Sie dieses Git-Repository in HACS unter „Benutzerdefinierte Repositories“ hinzu.
+1. Fügen Sie dieses Git-Repository in HACS unter „Benutzerdefinierte Repositories“ hinzu. [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=rvtech-hacs&owner=C64Axel)
 2. Starten Sie Home Assistant neu.
 3. Richten Sie die Integration über die Integrationsseite ein.
 
